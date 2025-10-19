@@ -1,6 +1,6 @@
 # Minimal RAG API (FastAPI + Chroma + llama.cpp)
 
-A minimal Retrieval-Augmented Generation (RAG) service using [Haystack](https://haystack.deepset.ai/) with two endpoints: /ingest for adding documents and /query for asking questions retrieving those docs. It uses open-source embeddings and a local LLM (via [llama.cpp](https://github.com/ggml-org/llama.cpp)) so it runs offline using.
+A minimal Retrieval-Augmented Generation (RAG) service using [Haystack](https://haystack.deepset.ai/) with two endpoints: `/ingest` for adding documents and `/query` for asking questions retrieving those docs. It uses open-source embeddings and a local LLM (via [llama.cpp](https://github.com/ggml-org/llama.cpp)) so it runs offline using.
 
 ## Project Structure
 
@@ -58,14 +58,13 @@ Open [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
 
 #### 1. Ingest a document
 
-Endpoint: POST /ingest
+Endpoint: `POST /ingest`
 
-Upload a small UTF-8 text file.
-The server will split, embed, and store it.
+Upload a text file. The server will split, embed, and store it.
 
 #### 2. Ask a question
 
-Endpoint: POST /query
+Endpoint: `POST /query`
 
 ## Design Choices
 - Chroma is simple, lightweight vector DB with persistence. Easy to use for minimal RAG without managing external services.
