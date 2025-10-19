@@ -16,8 +16,8 @@ Minimal-RAG/
 ├─ index_pipeline.py           # Document splitter + embedder + writer
 ├─ rag_pipeline.py             # Query embedder + retriever + prompt + LLM + answer
 ├─ chroma_db/                  # (persisted Chroma data; created at runtime)
-└─ model/
-   └─ openchat-3.5-1210.Q3_K_S.gguf   
+└─ model/                      # (model directory; created automatically at build)
+   └─ openchat-3.5-1210.Q3_K_S.gguf  # downloaded automatically during Docker build
 ```
 
 ## How it works
@@ -45,7 +45,12 @@ docker compose up
 ```
 
 The compose file runs a single service: `rag_api`.
-Chroma data persists under ./chroma_db.
+The Docker build automatically:
+- Creates the `/app/model` directory
+- Downloads the LLM file from Hugging Face: [openchat-3.5-1210.Q3_K_S.gguf](https://huggingface.co/TheBloke/openchat-3.5-1210-GGUF/blob/4b8bafa8b8a69336dca6e306a129c55f1ebbac05/openchat-3.5-1210.Q3_K_S.gguf)
+
+It stores it under `/app/model/` inside the container
+Chroma data persists locally under `./chroma_db`.
 
 
 ### 4. Try it out
